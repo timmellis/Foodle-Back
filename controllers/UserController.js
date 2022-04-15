@@ -2,10 +2,20 @@ const { User } = require('../models')
 const middleware = require ('../middleware')
 
 
+
 const GetUsers = async (req, res) => {
     try {
-        const users = await user.findAll()
+        const users = await User.findAll()
         res.send(users)
+    } catch (error) {
+        throw error
+    }
+}
+
+const GetUsersById = async (req, res) => {
+    try {
+        const usersId = await User.findByPk(req.params.user_id)
+        res.send(usersId)
     } catch (error) {
         throw error
     }
@@ -38,6 +48,7 @@ const UpdateUser = async (req, res) => {
         module.exports = {
             GetUsers,
             UpdateUser,
-            DeleteUser
+            DeleteUser,
+            GetUsersById
         }
         
