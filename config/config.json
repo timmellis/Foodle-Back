@@ -3,7 +3,6 @@
     "database": "foodle_development",
     "host": "127.0.0.1",
     "dialect": "postgres",
-    "password": "FuckyouCovid19!"
   },
   "test": {
     "database": "foodle_test",
