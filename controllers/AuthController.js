@@ -23,7 +23,7 @@ const Login = async (req, res) => {
       raw: true
     })
     if (user && 
-      (await middleware.comparePassword(user.passwordDigest, req.body.password))
+      (await middleware.comparePassword(req.body.password, user.passwordDigest))
     ) {
       let payload = {id: user.id, username: user.username }
       let token = middleware.createToken(payload)
