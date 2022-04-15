@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const AuthRouter = require('./routes/AuthRouter')
 const UserRouter = require('./routes/UserRouter')
 const PostRouter = require('./routes/PostRouter')
+const CommentRouter = require('./routes/CommentRouter')
 
 const app = express()
 
@@ -18,5 +19,6 @@ app.use(bodyParser.json())
 app.use('/auth', AuthRouter)
 app.use('/users', UserRouter)
 app.use('/posts', PostRouter)
+app.use('/comments', CommentRouter)
 
 app.listen(PORT, () => console.log(`Boom! Server running on port: ${PORT}`))
