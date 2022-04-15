@@ -10,7 +10,28 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      // FOLLOWER / FOLLOWING ASSOCIATION (THROUGH JOIN TABLE)
+      // MANY-MANY-SELF
+      User.belongsToMany(models.User, {
+        as: 'followers',
+        through: models.UserFollower,
+        foreignKey: 'userId'
+      }),
+      User.belongsToMany(models.User, {
+        as: 'following',
+        through: models.UserFollower,
+        foreignKey: 'followerId'
+      }),
+
+      // POSTS ASSOCIATION : HAS-MANY
+      User.hasMany(models.Post, {
+        foreignKey: 'userId'
+      }),
+
+      // COMMENTS ASSOCIATION : HAS-MANY
+      User.hasMany(models.Comment, {
+        foreignKey: 'userId'
+      })
     }
   }
   User.init({
