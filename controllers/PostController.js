@@ -1,5 +1,15 @@
 const { Post, User } = require('../models')
 
+
+const GetAllPosts = async (req, res) => {
+  try {
+    const allPosts = await Post.findAll()
+    res.send(allPosts)
+  } catch (error) {
+    throw error
+  }
+}
+
 const GetPostsByUserId = async (req, res) => {
   try {
     const posts = await Post.findAll({

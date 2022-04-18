@@ -3,6 +3,8 @@ const controller = require('../controllers/PostController')
 
 const middleware = require('../middleware')
 
+router.get('/', controller.GetAllPosts)
+
 router.get('/user/:user_id', controller.GetPostsByUserId)
 
 router.get('/:post_id', controller.GetPostById)
