@@ -4,8 +4,18 @@ const middleware = require ('../middleware')
 
 const GetUsers = async (req, res) => {
     try {
-        const users = await user.findAll()
+        const users = await User.findAll()
         res.send(users)
+    } catch (error) {
+        throw error
+    }
+}
+const GetUserDetails = async (req, res) => {
+    try {
+        const details = await User.findAll(
+            {where: {id: req.params.user_id} }
+        )
+        res.send(details)
     } catch (error) {
         throw error
     }
@@ -23,11 +33,10 @@ const UpdateUser = async (req, res) => {
     }
 }
 
-
-    const DeleteUser = async (req, res) => {
-        try {
-            await User.destroy({ where: { id: req.params.user_id } })
-            res.send({ msg: 'User Deleted', payload: req.params.user_id, status: 'Ok '})
+const DeleteUser = async (req, res) => {
+    try {
+        await User.destroy({ where: { id: req.params.user_id } })
+        res.send({ msg: 'User Deleted', payload: req.params.user_id, status: 'Ok '})
     } catch (error) {
             throw error
     }
