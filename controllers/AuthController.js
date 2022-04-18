@@ -52,7 +52,7 @@ const UpdatePassword = async (req, res) => {
       return res.send({ status: 'Ok', payload: user })
     }
     res.status(401).send({ status: 'Error', msg: 'Unauthorized' })
-  } catch (error) {}
+  } catch (error) {throw error}
 }
 
 const CheckSession = async (req, res) => {
