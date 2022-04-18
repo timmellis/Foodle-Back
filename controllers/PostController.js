@@ -70,6 +70,7 @@ const DeletePost = async (req, res) => {
 }
 
 module.exports = {
+  GetAllPosts,
   GetPostById, 
   GetPostsByUserId, 
   CreatePost, 
