@@ -17,14 +17,17 @@ const comparePassword = async (password, storedPassword) => {
 
 const createToken = (payload) => {
   let token = jwt.sign(payload, APP_SECRET)
+  console.log("CREATE TOKEN", token)
   return token
 }
 
 const verifyToken = (req, res, next) => {
   const { token } = res.locals
+  console.log("VERIFY TOKEN", token)
   try {
     let payload = jwt.verify(token, APP_SECRET)
     if (payload) {
+      res.locals.payload = payload
       return next()
     }
     res.status(401).send({status: "error", message: "You are not authorized!" }) 
