@@ -20,6 +20,17 @@ const GetUserDetails = async (req, res) => {
         throw error
     }
 }
+const GetUserDetailsByUsername = async (req, res) => {
+    console.log("HERE")
+    try {
+        const details = await User.findOne(
+            {where: {username: req.params.username} }
+        )
+        res.send(details)
+    } catch (error) {
+        throw error
+    }
+}
 
 const UpdateUser = async (req, res) => {
     try {
@@ -47,6 +58,7 @@ const DeleteUser = async (req, res) => {
         module.exports = {
             GetUsers,
             GetUserDetails,
+            GetUserDetailsByUsername,
             UpdateUser,
             DeleteUser
         }

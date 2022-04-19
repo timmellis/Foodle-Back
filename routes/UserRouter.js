@@ -5,9 +5,10 @@ const middleware = require('../middleware')
 router.get ('/', controller.GetUsers)
 
 router.get ('/:user_id', controller.GetUserDetails)
+router.get ('/byusername/:username', controller.GetUserDetailsByUsername)
 
 router.put(
-    '/:user_id',
+    '/update/:user_id',
     middleware.stripToken,
     middleware.verifyToken,
     controller.UpdateUser
