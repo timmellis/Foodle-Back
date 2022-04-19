@@ -35,6 +35,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: false
     },
+    title: DataTypes.STRING,
     description: DataTypes.TEXT,
     recipeUrl: DataTypes.STRING,
     rating: DataTypes.INTEGER
