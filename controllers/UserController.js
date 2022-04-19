@@ -12,7 +12,7 @@ const GetUsers = async (req, res) => {
 }
 const GetUserDetails = async (req, res) => {
     try {
-        const details = await User.findAll(
+        const details = await User.findOne(
             {where: {id: req.params.user_id} }
         )
         res.send(details)
