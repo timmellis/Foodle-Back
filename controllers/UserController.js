@@ -54,12 +54,11 @@ const DeleteUser = async (req, res) => {
 }  
 
 
-
-        module.exports = {
-            GetUsers,
-            GetUserDetails,
-            GetUserDetailsByUsername,
-            UpdateUser,
-            DeleteUser
-        }
+module.exports = {
+    GetUsers,
+    GetUserDetails,
+    GetUserDetailsByUsername,
+    UpdateUser,
+    DeleteUser
+}
         

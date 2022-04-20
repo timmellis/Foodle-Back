@@ -7,15 +7,13 @@ router.get ('/', controller.GetUsers)
 router.get ('/:user_id', controller.GetUserDetails)
 router.get ('/byusername/:username', controller.GetUserDetailsByUsername)
 
-router.put(
-    '/update/:user_id',
+router.put('/update/:user_id',
     middleware.stripToken,
     middleware.verifyToken,
     controller.UpdateUser
     )
 
-router.delete(
-    '/:user_id',
+router.delete( '/:user_id',
     middleware.stripToken,
     middleware.verifyToken,
     controller.DeleteUser

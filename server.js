@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 
 const AuthRouter = require('./routes/AuthRouter')
 const UserRouter = require('./routes/UserRouter')
+const UserFollowerRouter = require('./routes/UserFollowerRouter')
 const PostRouter = require('./routes/PostRouter')
 const CommentRouter = require('./routes/CommentRouter')
 
@@ -18,6 +19,7 @@ app.use(bodyParser.json())
 
 app.use('/auth', AuthRouter)
 app.use('/users', UserRouter)
+app.use('/userfollowers', UserFollowerRouter)
 app.use('/posts', PostRouter)
 app.use('/comments', CommentRouter)
 
