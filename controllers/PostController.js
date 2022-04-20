@@ -3,7 +3,12 @@ const { Post, User } = require('../models')
 
 const GetAllPosts = async (req, res) => {
   try {
-    const allPosts = await Post.findAll()
+    const allPosts = await Post.findAll({
+      include: [
+        {model: User, 
+        attributes: ['id','username','fullname','email','profileImg']}
+      ]
+    })
     res.send(allPosts)
   } catch (error) {
     throw error
