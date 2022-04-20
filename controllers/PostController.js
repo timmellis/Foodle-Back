@@ -1,4 +1,4 @@
-const { Post, User } = require('../models')
+const { Post, User, Comment } = require('../models')
 
 
 const GetAllPosts = async (req, res) => {
@@ -29,7 +29,11 @@ const GetPostsByUserId = async (req, res) => {
 const GetPostById = async (req, res) => {
   try {
     const post = await Post.findOne({
-      where: {id: req.params.post_id}
+      where: {id: req.params.post_id},
+      include: [
+        {model: Comment,
+        attributes: ['id','comment','rating','userId']}
+      ]
     })
     res.send(post)
   } catch (error) {
