@@ -10,6 +10,25 @@ const GetUsers = async (req, res) => {
         throw error
     }
 }
+
+const GetAllUsersWithFollowers = async (req, res) => {
+    try {
+      const AllUsersWithFollowers = await User.findAll({
+        include: [
+          { model: User,
+            as: 'followers',
+            attributes: ['id','username','profileImg'],
+            through: {attributes: []}
+          }
+        ]
+      })
+      res.send(AllUsersWithFollowers)
+    } catch (error) {
+      throw error
+    }
+  }
+  
+
 const GetUserDetails = async (req, res) => {
     try {
         const details = await User.findOne(
@@ -55,10 +74,10 @@ const DeleteUser = async (req, res) => {
 
 
 module.exports = {
+    GetAllUsersWithFollowers,
     GetUsers,
     GetUserDetails,
     GetUserDetailsByUsername,
     UpdateUser,
     DeleteUser
 }
-        

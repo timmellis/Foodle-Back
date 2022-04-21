@@ -3,7 +3,8 @@ module.exports = {
   
     development: {
       database: "foodle_development",
-      dialect: "postgres"
+      dialect: "postgres",
+      password: "FuckyouCovid19!"
     },
     test: {
       database: "foodle_test",
