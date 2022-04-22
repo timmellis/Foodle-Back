@@ -18,7 +18,7 @@ const GetAllPosts = async (req, res) => {
 const GetPostsByUserId = async (req, res) => {
   try {
     const posts = await Post.findAll({
-      where: {userId: req.params.user_id}
+      where: {userId: req.params.user_id},
     })
     res.send(posts)
   } catch (error) {
@@ -31,6 +31,10 @@ const GetPostById = async (req, res) => {
     const post = await Post.findOne({
       where: {id: req.params.post_id},
       include: [
+        {
+          model: User,
+          attributes: ['id','username']
+        },
         {
           model: Comment,
           attributes: ['id','comment','rating','userId'],
