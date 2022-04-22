@@ -19,6 +19,12 @@ const GetAllUsersWithFollowers = async (req, res) => {
             as: 'followers',
             attributes: ['id','username','profileImg'],
             through: {attributes: []}
+          },
+          {
+            model: User,
+            as: 'following',
+            attributes: ['id','username','profileImg'],
+            through: {attributes: []}
           }
         ]
       })
